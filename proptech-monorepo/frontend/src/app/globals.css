@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  border-color: theme("colors.indigo.DEFAULT");
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+/* Visible keyboard focus everywhere - never suppressed. */
+:focus-visible {
+  outline: 3px solid theme("colors.clay");
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer components {
+  .select,
+  .input {
+    @apply rounded-control border-[1.5px] border-indigo bg-white/70 px-3 py-2 font-sans text-[15px] text-soot;
+  }
+  .select:disabled,
+  .input:disabled {
+    @apply cursor-not-allowed opacity-40;
+  }
+  .btn-primary {
+    @apply rounded-control bg-indigo px-6 py-3 font-sans text-[15px] font-medium text-sand transition-colors hover:bg-indigo-deep disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply rounded-control border-[1.5px] border-indigo px-6 py-3 font-sans text-[15px] font-medium text-indigo transition-colors hover:bg-sandDeep disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
